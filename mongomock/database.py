@@ -53,14 +53,12 @@ class Database(object):
                 for name, collection in self._collections.items():
                     if collection is name_or_collection:
                         collection._documents = OrderedDict()
-                        del self._collections[name]
                         break
             else:
                 if name_or_collection in self._collections:
                     collection = self._collections.get(name_or_collection)
                     if collection:
                         collection._documents = OrderedDict()
-                del self._collections[name_or_collection]
         # EAFP paradigm
         # (http://en.m.wikipedia.org/wiki/Python_syntax_and_semantics)
         except Exception:
